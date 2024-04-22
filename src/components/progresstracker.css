@@ -1,0 +1,6 @@
+.tracker {
+    background-image: url(../images/ProgressTracker.png);
+    position: absolute;
+    top: 30%;
+    right: 3%
+}

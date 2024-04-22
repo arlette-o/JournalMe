@@ -1,0 +1,18 @@
+
+.reminder--blue{
+    position: absolute;
+    bottom: 55px;
+    left: 116px;
+}
+
+.reminder--yellow{
+    position: absolute;
+    bottom: 5px;
+    left: 294px;
+}
+
+.reminder--green{
+    position: absolute;
+    bottom: 88px;
+    left: 428px;
+}
