@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -8,7 +11,22 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { Card, Typography } from "@mui/material";
 
+import { login } from "../actions/auth.js";
+
 const SignIn = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signIn = () => {
+    const credentials = {
+      username,
+      password,
+    };
+
+    login(credentials);
+    navigate("/home");
+  };
   return (
     <Box height="100vh" sx={{ background: "#F3EDE2" }}>
       <Grid container alignItems="center" justifyContent="center">
@@ -35,6 +53,7 @@ const SignIn = () => {
                   ),
                 }}
                 sx={{ m: 3 }}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <TextField
                 type="password"
@@ -48,6 +67,7 @@ const SignIn = () => {
                   ),
                 }}
                 sx={{ m: 3 }}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Box>
             <Box
@@ -66,6 +86,7 @@ const SignIn = () => {
                 fullWidth
                 variant="contained"
                 sx={{ borderRadius: "12px" }}
+                onClick={signIn}
               >
                 Sign In
               </Button>
