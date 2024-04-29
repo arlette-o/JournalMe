@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -10,7 +12,22 @@ import EmailIcon from "@mui/icons-material/Email";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Card, Typography } from "@mui/material";
 
+import { createAccount } from "../actions/auth.js";
+
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signUp = async () => {
+    const userInfo = {
+      email,
+      username,
+      password,
+    };
+    await createAccount(userInfo);
+  };
+
   return (
     <Box height="100vh" sx={{ background: "#F3EDE2" }}>
       <Grid container alignItems="center" justifyContent="center">
@@ -37,6 +54,7 @@ const SignUp = () => {
                   ),
                 }}
                 sx={{ m: 3 }}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 label="Create a username"
@@ -49,6 +67,7 @@ const SignUp = () => {
                   ),
                 }}
                 sx={{ m: 3 }}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <TextField
                 type="password"
@@ -62,6 +81,7 @@ const SignUp = () => {
                   ),
                 }}
                 sx={{ m: 3 }}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <TextField
                 type="password"
@@ -87,6 +107,7 @@ const SignUp = () => {
                 fullWidth
                 variant="contained"
                 sx={{ borderRadius: "12px" }}
+                onClick={signUp}
               >
                 Create Account
               </Button>

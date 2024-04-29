@@ -8,3 +8,12 @@ export const login = async (credentials) => {
     console.log(error);
   }
 };
+
+export const createAccount = async (userInfo) => {
+  try {
+    const response = await API.createAccount(userInfo);
+    console.log("success");
+  } catch (error) {
+    console.log(error);
+  }
+};

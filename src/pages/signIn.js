@@ -18,13 +18,13 @@ const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const signIn = () => {
+  const signIn = async () => {
     const credentials = {
       username,
       password,
     };
 
-    login(credentials);
+    await login(credentials);
     navigate("/home");
   };
   return (
